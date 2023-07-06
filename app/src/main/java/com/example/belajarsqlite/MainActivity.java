@@ -55,6 +55,14 @@ public class MainActivity extends AppCompatActivity {
                 String isian_nama = ednama.getText().toString();
                 String isian_nim = ednim.getText().toString();
                 String isian_nomerhp = ednomerhp.getText().toString();
+                int mhslist = Integer.parseInt(mhsList.toString());
+
+                Intent intent_list = new Intent(MainActivity.this, ListMhsActivity.class);
+
+
+                for(int i=1; i <= mhslist; i++){
+                    System.out.print(i+" ");
+                }
 
                 if(isian_nama.isEmpty() || isian_nim.isEmpty() || isian_nomerhp.isEmpty()){
                     Toast.makeText(getApplicationContext(), "Empty", Toast.LENGTH_SHORT).show();
@@ -101,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
                 mhsList = db.list();
 
                 if(mhsList.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "No Data", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Data Melebihi Batas", Toast.LENGTH_SHORT).show();
                 }else{
                     Intent intent_list = new Intent(MainActivity.this, ListMhsActivity.class);
                     intent_list.putParcelableArrayListExtra("mhsList", mhsList);
